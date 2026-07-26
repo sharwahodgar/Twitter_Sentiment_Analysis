@@ -1,32 +1,35 @@
-# 🛒 Retail Sales Analysis
+# 🐦 Twitter Sentiment Analysis using Machine Learning
 
-A complete Exploratory Data Analysis (EDA) project that analyzes retail sales data to uncover customer purchasing behavior, sales trends, and business insights using Python.
+A Natural Language Processing (NLP) project that classifies tweets as **Positive** or **Negative** using Machine Learning. The project performs text preprocessing, feature extraction with TF-IDF, and sentiment classification using Logistic Regression.
 
 ---
 
 ## 📌 Project Overview
 
-This project focuses on analyzing retail sales transactions using Python and data analysis libraries. The objective is to clean the dataset, perform exploratory data analysis, visualize patterns, and generate actionable business insights.
+Twitter is one of the largest platforms where people express their opinions about products, events, brands, and social issues. This project uses Natural Language Processing (NLP) techniques to analyze tweets and determine whether their sentiment is positive or negative.
 
-The analysis was performed in **Google Colab**, and the dataset was imported directly from **Kaggle** using the Kaggle API.
+The project was implemented in **Google Colab**, and the dataset was downloaded directly from **Kaggle** using the **Kaggle API**.
 
 ---
 
 ## 📂 Dataset
 
-**Source:** Kaggle Retail Sales Dataset
+**Dataset:** Sentiment140
 
-The dataset contains retail transaction records including:
+- Source: Kaggle
+- Total Tweets: 1.6 Million
+- Labels:
+  - 0 → Negative
+  - 4 → Positive
 
-- Transaction ID
+Dataset contains:
+
+- Target
+- Tweet ID
 - Date
-- Customer ID
-- Gender
-- Age
-- Product Category
-- Quantity
-- Price per Unit
-- Total Amount
+- Query
+- Username
+- Tweet Text
 
 ---
 
@@ -37,95 +40,119 @@ The dataset contains retail transaction records including:
 - Kaggle API
 - Pandas
 - NumPy
-- Matplotlib
-- Seaborn
+- NLTK
+- Regex (re)
+- Scikit-learn
+- Pickle
 
 ---
 
-## 📊 Project Workflow
+## 📚 Python Libraries
+
+```python
+import numpy as np
+import pandas as pd
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import pickle
+```
+
+---
+
+## 🔄 Project Workflow
 
 1. Import required libraries
 2. Download dataset using Kaggle API
-3. Load dataset
-4. Data Cleaning
-5. Data Preprocessing
-6. Exploratory Data Analysis (EDA)
-7. Data Visualization
-8. Business Insights
+3. Load dataset into Pandas
+4. Data preprocessing
+5. Remove special characters
+6. Convert text to lowercase
+7. Remove stopwords
+8. Apply Porter Stemming
+9. Convert text into TF-IDF vectors
+10. Split data into training and testing sets
+11. Train Logistic Regression model
+12. Evaluate model accuracy
+13. Save trained model using Pickle
+14. Predict sentiment of new tweets
 
 ---
 
-## 📈 Analysis Performed
+## 🧹 Text Preprocessing
 
-- Dataset overview
-- Missing value analysis
-- Data type inspection
-- Sales trend analysis
-- Customer age distribution
-- Gender-wise purchases
-- Product category analysis
-- Monthly sales analysis
-- Quantity sold analysis
-- Revenue distribution
-- Correlation analysis
+The following preprocessing steps were applied:
+
+- Lowercase conversion
+- Removal of URLs
+- Removal of usernames
+- Removal of punctuation
+- Removal of numbers
+- Stopword removal
+- Porter Stemming
 
 ---
 
-## 📷 Sample Visualizations
+## 🤖 Machine Learning Model
 
-- Sales Distribution
-- Product Category Sales
-- Customer Age Distribution
-- Monthly Revenue Trend
-- Gender-wise Purchases
-- Correlation Heatmap
+**Algorithm Used**
+
+- Logistic Regression
+
+**Feature Extraction**
+
+- TF-IDF Vectorization
 
 ---
 
-## 💡 Key Insights
+## 📊 Model Evaluation
 
-- Identified the best-performing product categories.
-- Analyzed customer purchasing behavior.
-- Compared purchasing trends across genders.
-- Examined monthly revenue trends.
-- Explored age distribution of customers.
-- Detected relationships between numerical features using correlation analysis.
+Evaluation Metrics:
+
+- Training Accuracy
+- Testing Accuracy
+- Accuracy Score
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Retail-Sales-Analysis/
+Twitter-Sentiment-Analysis/
 │
-├── Retail_Sales_Analysis.ipynb
+├── Twitter_Sentiment_Analysis.ipynb
 ├── README.md
 ├── requirements.txt
-└── images/
+├── trained_model.sav
+└── kaggle.json
 ```
 
 ---
 
 ## ▶️ How to Run
 
-### Clone the repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/sharwahodgar/Twitter_Sentiment_Analysis
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
-pip install pandas numpy matplotlib seaborn kaggle
+pip install numpy pandas nltk scikit-learn kaggle
 ```
 
-### Kaggle API Setup
+---
 
-1. Create a Kaggle account.
-2. Generate an API token from **Account → Create New API Token**.
-3. Upload the downloaded `kaggle.json` file to Google Colab.
-4. Configure the API:
+## Kaggle API Setup
+
+Upload your `kaggle.json` file in Google Colab.
 
 ```python
 from google.colab import files
@@ -136,42 +163,45 @@ files.upload()
 !chmod 600 ~/.kaggle/kaggle.json
 ```
 
-### Download Dataset
+Download the dataset:
 
 ```bash
-!kaggle datasets download -d <dataset-name>
+!kaggle datasets download -d kazanova/sentiment140
 ```
 
-Unzip the dataset:
+Extract the dataset:
 
 ```bash
-!unzip dataset.zip
+!unzip sentiment140.zip
 ```
 
-Run all notebook cells to reproduce the analysis.
+Run all notebook cells to train the model and perform sentiment prediction.
 
 ---
 
-## 📚 Libraries Used
+## 🎯 Features
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-```
+- Twitter sentiment classification
+- NLP preprocessing pipeline
+- TF-IDF feature extraction
+- Logistic Regression classifier
+- Model serialization using Pickle
+- Prediction on custom tweet text
 
 ---
 
-## 🎯 Learning Outcomes
+## 📖 Learning Outcomes
 
-- Data Cleaning
-- Exploratory Data Analysis
-- Data Visualization
-- Statistical Analysis
-- Business Insight Generation
+- Natural Language Processing (NLP)
+- Text Cleaning
+- Feature Engineering
+- TF-IDF Vectorization
+- Machine Learning Classification
+- Logistic Regression
+- Model Evaluation
+- Model Serialization
 - Working with Kaggle API
-- Using Google Colab for Data Analysis
+- Google Colab Workflow
 
 ---
 
@@ -182,3 +212,4 @@ import seaborn as sns
 - GitHub: https://github.com/sharwahodgar
 - LinkedIn: https://www.linkedin.com/in/sharwahodgar/
 
+---
